@@ -1,6 +1,6 @@
 import { DynamicModule } from '@nestjs/common';
 import { ApmService } from './apm.service';
-import { APP_INTERCEPTOR } from '@nestjs/core';
+import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { ApmInterceptor } from './apm.interceptor';
 
 export class ApmModule {

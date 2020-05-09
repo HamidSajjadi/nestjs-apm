@@ -9,8 +9,8 @@ export class ApmService {
     this.apm = APM;
   }
 
-  captureError(data: any) {
-    this.apm.captureError(data);
+  captureError(data: any, options?: any) {
+    this.apm.captureError(data, options);
   }
 
   startTransaction(name, type): any {
