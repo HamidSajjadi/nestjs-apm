@@ -20,10 +20,14 @@ export class ApmInterceptor implements NestInterceptor {
     const res = context.switchToHttp().getResponse();
     return next.handle().pipe(
       catchError(error => {
-        this.apmService.captureError(error.message ? error.message : error, {
+        if (error.message && error.message.message) {
+          error.message = error.message.message;
+        }
+        this.apmService.captureError(error, {
           request: req,
           response: res
         });
+
         throw error;
       })
     );
